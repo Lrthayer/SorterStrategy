@@ -1,17 +1,32 @@
 #include "mergesort.h"
 
 template <typename T>
-void mergeSort<T>::sort(T *arr, int l, int r)
+mergeSort<T>::mergeSort(T *arr, int left, int right)
+    :
+      arr_(arr),
+      left_(left),
+      right_(right-1)//for indexing
 {
-    if (l < r)
+
+}
+
+template <typename T>
+void mergeSort<T>::sort()
+{
+    if (left_ < right_)
     {
-        int m = (l + r)/2;
-        std::cout << "\n" << m << "\n" << l << "\n";
-        this->sort(arr, l, m);
-                std::cout << "test1";
-        this->sort(arr, m+1, r);
-        std::cout << "test2";
-        merge(arr, l, m, r);
+        int m = (left_ + right_)/2;
+        //this->sort(arr_, left_, m);
+        int tmp = right_;
+        right_ = m;
+        this->sort();
+        //this->sort(arr_, m+1, right_);
+        right_ = tmp;
+        tmp = left_;
+        left_ = m + 1;
+        this->sort();
+        left_ = tmp;
+        merge(arr_, left_, m, right_);
     }
     return;
 }

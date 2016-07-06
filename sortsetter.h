@@ -3,21 +3,23 @@
 
 #include "insertionsort.h"
 #include "quicksort.h"
+#include "heapsort.h"
+#include "mergesort.h"
 
 template <typename T>
 class sortSetter
 {
 public:
-    void setSort(T *arr, int l, int r, int m);
+    void setSort(T *arr, int l, int r);
+    void setSort(T *arr, int length);
 
 protected:
     typedef T type;
 
 private:
-    int *array;
-    int left;
-    int right;
-    int mid;
+    int *array_;
+    int left_;
+    int right_;
 
 };
 #include "sortsetter.cpp"

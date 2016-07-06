@@ -7,10 +7,14 @@ template <typename T>
 class heapSort : public Sort<T>
 {
 public:
-    void sort(T *arr, int empty, int length);
+    heapSort(T *arr, int length);
+    void sort();
 
 private:
     void heapify(T *arr, int length, int index);
+
+    T *arr_;
+    int length_;
 };
 
 #include "heapsort.cpp"

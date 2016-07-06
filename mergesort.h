@@ -7,10 +7,14 @@ template <typename T>
 class mergeSort : public Sort<T>
 {
 public:
-    void sort(T *arr, int l, int r);
+    mergeSort(T *arr, int left, int right);
+    void sort();
 
 private:
     void merge(T *arr, int l, int m, int r);
+    T *arr_;
+    int left_;
+    int right_;
 };
 #include "mergesort.cpp"
 

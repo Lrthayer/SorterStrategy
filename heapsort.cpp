@@ -1,6 +1,15 @@
 #include "heapsort.h"
 
 template <typename T>
+heapSort<T>::heapSort(T *arr, int length)
+    :
+      arr_(arr),
+      length_(length)
+{
+
+}
+
+template <typename T>
 void heapSort<T>::heapify(T *arr, int length, int index)
 {
     int high = index;
@@ -20,14 +29,14 @@ void heapSort<T>::heapify(T *arr, int length, int index)
 }
 
 template <typename T>
-void heapSort<T>::sort(T *arr, int empty, int length)
+void heapSort<T>::sort()
 {
-    for (int i = length/2 -1; i>= 0; i--)
-        heapify(arr, length, i);
+    for (int i = length_/2 -1; i>= 0; i--)
+        heapify(arr_, length_, i);
 
-    for (int i=length-1; i>=0; i--)
+    for (int i=length_-1; i>=0; i--)
     {
-        this->swap(&arr[0], &arr[i]);
-        heapify(arr,i,0);
+        this->swap(&arr_[0], &arr_[i]);
+        heapify(arr_,i,0);
     }
 }
