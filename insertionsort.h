@@ -11,9 +11,12 @@ public:
     insertionSort(T *arr, int length);
     void sort();
 
+    int getIteration();
+
 private:
     T *arr_;
     int length_;
+    int iteration;
 };
 
 #include "insertionsort.cpp"

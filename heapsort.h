@@ -10,11 +10,14 @@ public:
     heapSort(T *arr, int length);
     void sort();
 
+    int getIteration();
+
 private:
     void heapify(T *arr, int length, int index);
 
     T *arr_;
     int length_;
+    int iteration;
 };
 
 #include "heapsort.cpp"

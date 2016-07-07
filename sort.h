@@ -10,6 +10,8 @@ public:
     Sort();
     virtual void sort() = 0;
 
+    virtual int getIteration();
+
 protected:
     //Type definition of the element type.
     typedef T type;

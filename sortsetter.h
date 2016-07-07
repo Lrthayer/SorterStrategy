@@ -17,6 +17,9 @@ public:
     void quick(T *arr, int l, int r);
     void insertion(T *arr, int length);
 
+    int getIteration();
+    void setIteration(int it);
+
 protected:
     typedef T type;
 
@@ -24,6 +27,8 @@ private:
     int *array_;
     int left_;
     int right_;
+    int iteration;
+
 
 };
 #include "sortsetter.cpp"

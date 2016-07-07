@@ -5,7 +5,8 @@ quickSort<T>::quickSort(T *arr, int l, int r)
     :
       arr_(arr),
       left_(l),
-      right_(r-1)//for size index
+      right_(r-1),//for size index
+      iteration(0)
 {
 
 }
@@ -18,6 +19,7 @@ int quickSort<T>::partition(T *arr, int low, int high)
 
     for (int j = low; j<= high -1; j++)
     {
+        iteration++;
         if(arr[j] <= pivot)
         {
             i++;
@@ -31,6 +33,7 @@ int quickSort<T>::partition(T *arr, int low, int high)
 template <typename T>
 void quickSort<T>::sort()
 {
+    iteration++;
     if (left_ < right_)
     {
         int pi = partition(arr_, left_, right_);
@@ -44,4 +47,10 @@ void quickSort<T>::sort()
         right_ = tmp;
         this->sort();
     }
+}
+
+template <typename T>
+int quickSort<T>::getIteration()
+{
+   return iteration;
 }

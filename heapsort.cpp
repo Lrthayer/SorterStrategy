@@ -4,7 +4,8 @@ template <typename T>
 heapSort<T>::heapSort(T *arr, int length)
     :
       arr_(arr),
-      length_(length)
+      length_(length),
+      iteration(0)
 {
 
 }
@@ -12,6 +13,7 @@ heapSort<T>::heapSort(T *arr, int length)
 template <typename T>
 void heapSort<T>::heapify(T *arr, int length, int index)
 {
+    iteration++;
     int high = index;
     int l = 2*index +1;
     int r = 2*index +2;
@@ -32,11 +34,21 @@ template <typename T>
 void heapSort<T>::sort()
 {
     for (int i = length_/2 -1; i>= 0; i--)
+    {
+        iteration++;
         heapify(arr_, length_, i);
+    }
 
     for (int i=length_-1; i>=0; i--)
     {
+        iteration++;
         this->swap(&arr_[0], &arr_[i]);
         heapify(arr_,i,0);
     }
+}
+
+template <typename T>
+int heapSort<T>::getIteration()
+{
+    return iteration;
 }

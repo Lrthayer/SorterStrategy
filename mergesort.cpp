@@ -5,7 +5,8 @@ mergeSort<T>::mergeSort(T *arr, int left, int right)
     :
       arr_(arr),
       left_(left),
-      right_(right-1)//for indexing
+      right_(right-1),//for indexing,
+      iteration(0)
 {
 
 }
@@ -13,6 +14,7 @@ mergeSort<T>::mergeSort(T *arr, int left, int right)
 template <typename T>
 void mergeSort<T>::sort()
 {
+    iteration++;
     if (left_ < right_)
     {
         int m = (left_ + right_)/2;
@@ -36,18 +38,23 @@ void mergeSort<T>::merge(T *arr, int l, int m, int r)
 {
     int i, j, k;
     int n1 = m -l +1;
-    int n2 = r -m;
-
+    int n2 = r -m;  
     T L[n1], R[n2];
 
     for (i =0; i < n1; i++)
+    {
+        iteration++;
         L[i] = arr[l + i];
+    }
     for (j=0; j <n2; j++)
+    {
+        iteration++;
         R[j] = arr[m + 1 + j];
-
+    }
     i = 0; j = 0; k = l ;
     while (i <n1 && j < n2)
     {
+        iteration++;
         if (L[i] <= R[j])
         {
             arr[k] = L[i];
@@ -63,6 +70,7 @@ void mergeSort<T>::merge(T *arr, int l, int m, int r)
 
     while (i < n1)
     {
+        iteration++;
         arr[k] = L[i];
         i++;
         k++;
@@ -70,8 +78,15 @@ void mergeSort<T>::merge(T *arr, int l, int m, int r)
 
     while (j < n2)
     {
+        iteration++;
         arr[k] = R[j];
         j++;
         k++;
     }
+}
+
+template <typename T>
+int mergeSort<T>::getIteration()
+{
+    return iteration;
 }
