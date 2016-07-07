@@ -10,7 +10,7 @@ public:
     void sort();
 
 private:
-    T partition(T *arr, int low, int high);
+    int partition(T *arr, int low, int high);
     T *arr_;
     int left_;
     int right_;

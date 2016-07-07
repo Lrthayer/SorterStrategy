@@ -12,6 +12,10 @@ class sortSetter
 public:
     void setSort(T *arr, int l, int r);
     void setSort(T *arr, int length);
+    void merge(T *arr, int left, int right);
+    void heap(T *arr, int length);
+    void quick(T *arr, int l, int r);
+    void insertion(T *arr, int length);
 
 protected:
     typedef T type;

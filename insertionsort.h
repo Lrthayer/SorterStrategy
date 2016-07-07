@@ -2,6 +2,7 @@
 #define INSERTIONSORT_H
 
 #include "sort.h"
+#include <iostream>
 
 template <typename T>
 class insertionSort : public Sort<T>

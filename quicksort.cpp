@@ -11,7 +11,7 @@ quickSort<T>::quickSort(T *arr, int l, int r)
 }
 
 template<typename T>
-T quickSort<T>::partition(T *arr, int low, int high)
+int quickSort<T>::partition(T *arr, int low, int high)
 {
     T pivot = arr[high];
     int i = (low -1);
@@ -25,7 +25,7 @@ T quickSort<T>::partition(T *arr, int low, int high)
         }
     }
     this->swap(&arr[i+1], &arr[high]);
-    return (i+1);
+    return (i + 1);
 }
 
 template <typename T>
@@ -39,7 +39,7 @@ void quickSort<T>::sort()
         right_ = pi - 1;
         this->sort();
         //this->sort(arr_, pi+1, right_);
-        int tmp2 = left_;
+        //int tmp2 = left_;
         left_ = pi + 1;
         right_ = tmp;
         this->sort();
