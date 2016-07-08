@@ -5,6 +5,9 @@
 #include "quicksort.h"
 #include "heapsort.h"
 #include "mergesort.h"
+#include "bucketsort.h"
+
+#include <ctime>
 
 template <typename T>
 class sortSetter
@@ -16,17 +19,16 @@ public:
     void heap(T *arr, int length);
     void quick(T *arr, int l, int r);
     void insertion(T *arr, int length);
+    void bucket(T *arr, int length);
 
     int getIteration();
     void setIteration(int it);
+    std::string whichOne(T *arr, int left, int right);
 
 protected:
     typedef T type;
 
 private:
-    int *array_;
-    int left_;
-    int right_;
     int iteration;
 
 

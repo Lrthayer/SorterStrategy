@@ -62,9 +62,28 @@ void sortSetter<T>::setSort(T *arr, int length)
         setIteration(sorter.getIteration());
         return;
     }
+    int per = length/4;
+    //if 1/4 of the list has 50% of elements reoccuring use bucketsort
+    int reoccur = 0;
+
+    for (int i = 0; i < per; i++)
+    {
+        if (arr[i] == arr[i+1])
+        {
+            reoccur++;
+        }
+    }
+
+    if (reoccur > per/4)
+    {
+        bucketSort<T> sorter (arr, length);
+        sorter.sort();
+        setIteration(sorter.getIteration());
+        return ;
+    }
 
     //try to see if it's in reverse order
-    int per = length/4;
+
     int reverse = 0;
     int notReverse = 0;
     for (int i =0; i < per; i++)
@@ -78,6 +97,8 @@ void sortSetter<T>::setSort(T *arr, int length)
             notReverse++;
         }
     }
+
+    //if 1/4 of the list is over 50% reverse order, use mergesort, otherwise use quicksort
     if (reverse > notReverse)
     {
         mergeSort<T> sorter (arr, 0, length);
@@ -91,13 +112,6 @@ void sortSetter<T>::setSort(T *arr, int length)
         sorter.sort();
         setIteration(sorter.getIteration());
         return ;
-    }
-
-    if (true)
-    {
-        heapSort<T> sorter(arr,length);
-        sorter.sort();
-        setIteration(sorter.getIteration());
     }
 }
 
@@ -134,6 +148,14 @@ void sortSetter<T>::heap(T *arr, int length)
 }
 
 template <typename T>
+void sortSetter<T>::bucket(T *arr, int length)
+{
+    bucketSort<T> sorter(arr,length);
+    sorter.sort();
+    setIteration(sorter.getIteration());
+}
+
+template <typename T>
 int sortSetter<T>::getIteration()
 {
     return iteration;
@@ -143,4 +165,62 @@ template <typename T>
 void sortSetter<T>::setIteration(int it)
 {
     iteration = it;
+}
+
+template <typename T>
+std::string sortSetter<T>::whichOne(T *arr, int left, int right)
+{
+    std::clock_t start;
+    double duration;
+    double duration2;
+    std::string quickest;
+
+    start = std::clock();
+    merge(arr, left, right);
+    duration = (std::clock()- start)/ (double) CLOCKS_PER_SEC;
+
+    start = std::clock();
+    quick(arr, left, right);
+    duration2 = (std::clock()- start)/ (double) CLOCKS_PER_SEC;
+
+    if (duration < duration2)
+    {
+        quickest = "mergeSort";
+    }
+    else
+    {
+        duration = duration2;
+        quickest = "quickSort";
+    }
+
+    start = std::clock();
+    insertion(arr,right);
+    duration2 = (std::clock()- start)/ (double) CLOCKS_PER_SEC;
+
+    if (duration > duration2)
+    {
+        duration = duration2;
+        quickest = "insertionSort";
+    }
+
+    start = std::clock();
+    heap(arr,right);
+    duration2 = (std::clock()- start)/ (double) CLOCKS_PER_SEC;
+
+    if (duration > duration2)
+    {
+        duration = duration2;
+        quickest = "heapSort";
+    }
+
+    start = std::clock();
+    bucket(arr,right);
+    duration2 = (std::clock()- start)/ (double) CLOCKS_PER_SEC;
+
+    if (duration > duration2)
+    {
+        duration = duration2;
+        quickest = "bucketSort";
+    }
+    return quickest;
 }
