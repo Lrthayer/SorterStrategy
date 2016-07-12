@@ -9,6 +9,7 @@ class bucketSort : public Sort<T>
 public:
     bucketSort(T *arr, int length);
     void sort();
+    void decendSort();
 
     int getIteration();
 

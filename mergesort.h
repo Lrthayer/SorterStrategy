@@ -9,6 +9,7 @@ class mergeSort : public Sort<T>
 public:
     mergeSort(T *arr, int left, int right);
     void sort();
+    void decendSort();
 
     int getIteration();
 

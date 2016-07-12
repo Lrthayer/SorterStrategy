@@ -86,6 +86,22 @@ void mergeSort<T>::merge(T *arr, int l, int m, int r)
 }
 
 template <typename T>
+void mergeSort<T>::decendSort()
+{
+    this->sort();
+    T *temp = new T[right_];
+    int j = 0;
+    for (int i = right_; i >= 0; i--)
+    {
+        temp[i] = arr_[j];
+        j++;
+    }
+
+    for (int i = 0; i < right_+1; i++)
+        arr_[i] = temp[i];
+}
+
+template <typename T>
 int mergeSort<T>::getIteration()
 {
     return iteration;

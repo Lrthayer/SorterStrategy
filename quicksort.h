@@ -8,6 +8,7 @@ class quickSort : public Sort<T>
 public:
     quickSort(T *arr, int l, int r);
     void sort();
+    void decendSort();
 
     int getIteration();
 

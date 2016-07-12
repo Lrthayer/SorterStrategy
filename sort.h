@@ -9,6 +9,7 @@ class Sort
 public:
     Sort();
     virtual void sort() = 0;
+    virtual void decendSort() = 0;
 
     virtual int getIteration();
 

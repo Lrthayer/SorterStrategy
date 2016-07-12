@@ -9,6 +9,7 @@ class heapSort : public Sort<T>
 public:
     heapSort(T *arr, int length);
     void sort();
+    void decendSort();
 
     int getIteration();
 

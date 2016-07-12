@@ -10,6 +10,7 @@ class insertionSort : public Sort<T>
 public:
     insertionSort(T *arr, int length);
     void sort();
+    void decendSort();
 
     int getIteration();
 

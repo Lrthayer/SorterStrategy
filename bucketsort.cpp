@@ -15,7 +15,7 @@ template<typename T>
 void bucketSort<T>::sort()
 {
     iteration ++;
-    int m = length_;
+    int m = 100;
 
     T buckets[m];
 
@@ -40,6 +40,22 @@ void bucketSort<T>::sort()
             arr_[i++] = j;
         }
     }
+}
+
+template <typename T>
+void bucketSort<T>::decendSort()
+{
+    this->sort();
+    T *temp = new T[length_];
+    int j = 0;
+    for (int i = length_-1; i >= 0; i--)
+    {
+        temp[i] = arr_[j];
+        j++;
+    }
+
+    for (int i = 0; i < length_; i++)
+        arr_[i] = temp[i];
 }
 
 template<typename T>

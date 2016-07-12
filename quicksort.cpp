@@ -50,6 +50,22 @@ void quickSort<T>::sort()
 }
 
 template <typename T>
+void quickSort<T>::decendSort()
+{
+    this->sort();
+    T *temp = new T[right_];
+    int j = 0;
+    for (int i = right_; i >= 0; i--)
+    {
+        temp[i] = arr_[j];
+        j++;
+    }
+
+    for (int i = 0; i < right_+1; i++)
+        arr_[i] = temp[i];
+}
+
+template <typename T>
 int quickSort<T>::getIteration()
 {
    return iteration;
