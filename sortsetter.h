@@ -13,7 +13,7 @@
 
 typedef std::chrono::high_resolution_clock Clock;
 
-template <typename T>
+template <typename T, std::size_t N>
 class sortSetter
 {
 public:
@@ -33,6 +33,7 @@ public:
     void quickDecend(T *arr, int l, int r);
 
     void insertion(T *arr, int length);
+    void insertion(std::array<T,N> *arr, int length);
     void insertionDecend(T *arr, int length);
 
     void bucket(T *arr, int length);
