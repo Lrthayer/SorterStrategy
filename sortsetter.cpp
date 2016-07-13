@@ -46,7 +46,7 @@ void sortSetter<T,N>::setSort(T *arr, int l, int r)
     if (true)
     {
         std::cout << "test3";
-        heapSort<T> sorter(arr,r);
+        heapSort<T, N> sorter(arr,r);
         sorter.sort();
         setIteration(sorter.getIteration());
     }
@@ -97,8 +97,7 @@ void sortSetter<T, N>::setSortDecend(T *arr, int l, int r)
 
     if (true)
     {
-        std::cout << "test3";
-        heapSort<T> sorter(arr,r);
+        heapSort<T, N> sorter(arr,r);
         sorter.decendSort();
         setIteration(sorter.getIteration());
     }
@@ -266,7 +265,6 @@ void sortSetter<T, N>::quickDecend(T *arr, int left, int right)
 template <typename T, size_t N>
 void sortSetter<T, N>::insertion(T *arr, int length)
 {
-    std::cout << "test5";
     insertionSort<T, N> sorter(arr,length);
     sorter.sort();
     setIteration(sorter.getIteration());
@@ -275,7 +273,14 @@ void sortSetter<T, N>::insertion(T *arr, int length)
 template <typename T, size_t N>
 void sortSetter<T, N>::insertion(std::array<T,N> *arr, int length)
 {
-    std::cout << "test4";
+    insertionSort<T, N> sorter(arr,length);
+    sorter.sort();
+    setIteration(sorter.getIteration());
+}
+
+template <typename T, size_t N>
+void sortSetter<T, N>::insertion(std::vector<T> *arr, int length)
+{
     insertionSort<T, N> sorter(arr,length);
     sorter.sort();
     setIteration(sorter.getIteration());
@@ -292,7 +297,23 @@ void sortSetter<T, N>::insertionDecend(T *arr, int length)
 template <typename T, size_t N>
 void sortSetter<T, N>::heap(T *arr, int length)
 {
-    heapSort<T> sorter(arr,length);
+    heapSort<T, N> sorter(arr,length);
+    sorter.sort();
+    setIteration(sorter.getIteration());
+}
+
+template <typename T, size_t N>
+void sortSetter<T, N>::heap(std::array<T, N> *arr, int length)
+{
+    heapSort<T, N> sorter(arr,length);
+    sorter.sort();
+    setIteration(sorter.getIteration());
+}
+
+template <typename T, size_t N>
+void sortSetter<T, N>::heap(std::vector<T> *arr, int length)
+{
+    heapSort<T, N> sorter(arr,length);
     sorter.sort();
     setIteration(sorter.getIteration());
 }
@@ -300,7 +321,7 @@ void sortSetter<T, N>::heap(T *arr, int length)
 template <typename T, size_t N>
 void sortSetter<T, N>::heapDecend(T *arr, int length)
 {
-    heapSort<T> sorter(arr,length);
+    heapSort<T, N> sorter(arr,length);
     sorter.decendSort();
     setIteration(sorter.getIteration());
 }

@@ -27,6 +27,8 @@ public:
     void mergeDecend(T *arr, int left, int right);
 
     void heap(T *arr, int length);
+    void heap(std::array<T,N> *arr, int length);
+    void heap(std::vector<T> *arr, int length);
     void heapDecend(T *arr, int length);
 
     void quick(T *arr, int l, int r);
@@ -34,6 +36,7 @@ public:
 
     void insertion(T *arr, int length);
     void insertion(std::array<T,N> *arr, int length);
+    void insertion(std::vector<T> *arr, int length);
     void insertionDecend(T *arr, int length);
 
     void bucket(T *arr, int length);

@@ -5,7 +5,8 @@ insertionSort<T,N>::insertionSort(T *arr, int length)
       arr_(arr),
       length_(length),
       iteration(0),
-      arrStd_(nullptr)
+      arrStd_(nullptr),
+      arrVec_(nullptr)
 {
 
 }
@@ -16,21 +17,33 @@ insertionSort<T,N>::insertionSort(std::array<T,N> *arr, int length)
       arr_(nullptr),
       length_(length),
       iteration(0),
-      arrStd_(arr)
+      arrStd_(arr),
+      arrVec_(nullptr)
 {
-    std::cout << "test3";
+    
+}
+
+template <typename T, size_t N>
+insertionSort<T,N>::insertionSort(std::vector<T> *arr, int length)
+    :
+      arr_(nullptr),
+      length_(length),
+      iteration(0),
+      arrStd_(nullptr),
+      arrVec_(arr)
+{
+    
 }
 
 template <typename T, size_t N>
 void insertionSort<T, N>::sort()
 {
-    std::cout << "test2";
-
-    if (arrStd_ == nullptr)
-        arraySort();
-    else if (arr_ == nullptr)
+    if (arrStd_ != nullptr)
         stdArraySort();
-
+    else if (arr_ != nullptr)
+        arraySort();
+    else if (arrVec_ != nullptr)
+        vectSort();
 }
 
 template<typename T, size_t N>
@@ -56,9 +69,30 @@ void insertionSort<T, N>::arraySort()
 }
 
 template<typename T, size_t N>
+void insertionSort<T, N>::vectSort()
+{
+    iteration++;
+    int j;
+    T temp;
+
+    for (int i = 0; i < length_; i++)
+    {
+        iteration++;
+        j = i;
+        while (j > 0 && arrVec_->at(j) < arrVec_->at(j-1))
+        {
+            iteration++;
+            temp = arrVec_->at(j);
+            arrVec_->at(j) = arrVec_->at(j-1);
+            arrVec_->at(j-1) = temp;
+            j--;
+        }
+    }
+}
+
+template<typename T, size_t N>
 void insertionSort<T, N>::stdArraySort()
 {
-    std::cout << "test";
     iteration++;
     int j;
     T temp;
