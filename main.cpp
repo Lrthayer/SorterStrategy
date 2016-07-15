@@ -13,15 +13,16 @@ int main()
     int j = 0;
     for (int i = 0; i < 51; i++)
     {
-    vect->at(i) = i;
+    vect->at(j) = i;
 	j++;
     }
     int arr_size = sizeof(arr2)/sizeof(arr2[0]);
     //int arr_size5 = sizeof(arr5)/sizeof(arr5[0]
 
-    sortSetter<int,51> sort2;
+    sortSetter<int> sort2;
 
-    sort2.mergeDecend(vect,0,51);
+    std::cout << sort2.whichOne(vect,51);
+    sort2.merge(vect,51);
     /*
     sortSetter<int> sort3;
     sortSetter<int> sort4;

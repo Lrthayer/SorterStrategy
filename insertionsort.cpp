@@ -1,53 +1,37 @@
 #include "insertionsort.h"
-template <typename T, size_t N>
-insertionSort<T,N>::insertionSort(T *arr, int length)
+template <typename T>
+insertionSort<T>::insertionSort(T *arr, int length)
     :
       arr_(arr),
       length_(length),
       iteration(0),
-      arrStd_(nullptr),
-      arrVec_(nullptr)
+      arrVec_(NULL)
 {
 
 }
 
-template <typename T, size_t N>
-insertionSort<T,N>::insertionSort(std::array<T,N> *arr, int length)
+template <typename T>
+insertionSort<T>::insertionSort(std::vector<T> *arr, int length)
     :
-      arr_(nullptr),
+      arr_(NULL),
       length_(length),
       iteration(0),
-      arrStd_(arr),
-      arrVec_(nullptr)
-{
-    
-}
-
-template <typename T, size_t N>
-insertionSort<T,N>::insertionSort(std::vector<T> *arr, int length)
-    :
-      arr_(nullptr),
-      length_(length),
-      iteration(0),
-      arrStd_(nullptr),
       arrVec_(arr)
 {
     
 }
 
-template <typename T, size_t N>
-void insertionSort<T, N>::sort()
+template <typename T>
+void insertionSort<T>::sort()
 {
-    if (arrStd_ != nullptr)
-        stdArraySort();
-    else if (arr_ != nullptr)
+    if (arr_ != nullptr)
         arraySort();
     else if (arrVec_ != nullptr)
         vectSort();
 }
 
-template<typename T, size_t N>
-void insertionSort<T, N>::arraySort()
+template<typename T>
+void insertionSort<T>::arraySort()
 {
     iteration++;
     int j;
@@ -68,8 +52,8 @@ void insertionSort<T, N>::arraySort()
     }
 }
 
-template<typename T, size_t N>
-void insertionSort<T, N>::vectSort()
+template<typename T>
+void insertionSort<T>::vectSort()
 {
     iteration++;
     int j;
@@ -90,30 +74,8 @@ void insertionSort<T, N>::vectSort()
     }
 }
 
-template<typename T, size_t N>
-void insertionSort<T, N>::stdArraySort()
-{
-    iteration++;
-    int j;
-    T temp;
-
-    for (int i = 0; i < length_; i++)
-    {
-        iteration++;
-        j = i;
-        while (j > 0 && arrStd_[j] < arrStd_[j-1])
-        {
-            iteration++;
-            temp = arrStd_->at(j);
-            arrStd_[j] = arrStd_[j-1];
-            arrStd_->at(j-1) = temp;
-            j--;
-        }
-    }
-}
-
-template <typename T, size_t N>
-void insertionSort<T,N>::decendSort()
+template <typename T>
+void insertionSort<T>::decendSort()
 {
     this->sort();
     T *temp = new T[length_];
@@ -128,8 +90,8 @@ void insertionSort<T,N>::decendSort()
         arr_[i] = temp[i];
 }
 
-template <typename T, size_t N>
-int insertionSort<T, N>::getIteration()
+template <typename T>
+int insertionSort<T>::getIteration()
 {
     return iteration;
 }
