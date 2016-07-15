@@ -22,7 +22,6 @@ int main()
     sortSetter<int> sort2;
 
     std::cout << sort2.whichOne(vect,51);
-    sort2.merge(vect,51);
     /*
     sortSetter<int> sort3;
     sortSetter<int> sort4;

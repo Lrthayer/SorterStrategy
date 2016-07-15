@@ -738,6 +738,15 @@ std::string sortSetter<T>::whichOne(T *arr, int left, int right)
         quickest = "quick";
     }
 
+    bucket(arr4,right);
+    it2 = getIteration();
+
+    if (it1 > it2)
+    {
+        it1 = it2;
+        quickest = "bucket";
+    }
+
     return quickest;
 }
 
@@ -785,6 +794,16 @@ std::string sortSetter<T>::whichOne(T *arr, int length)
         it1 = it2;
         quickest = "quick";
     }
+    bucket(arr4,length);
+
+    it2 = getIteration();
+
+    if (it1 > it2)
+    {
+        it1 = it2;
+        quickest = "bucket";
+    }
+
 
     return quickest;
 }
@@ -834,6 +853,15 @@ std::string sortSetter<T>::whichOne(std::vector<T> *arr, int left, int right)
         quickest = "quick";
     }
 
+    bucket(arr4,right);
+    it2 = getIteration();
+
+    if (it1 > it2)
+    {
+        it1 = it2;
+        quickest = "bucket";
+    }
+
     return quickest;
 }
 
@@ -880,6 +908,15 @@ std::string sortSetter<T>::whichOne(std::vector<T> *arr, int length)
     {
         it1 = it2;
         quickest = "quick";
+    }
+
+    bucket(&arr4,length);
+    it2 = getIteration();
+
+    if (it1 > it2)
+    {
+        it1 = it2;
+        quickest = "bucket";
     }
 
     return quickest;
