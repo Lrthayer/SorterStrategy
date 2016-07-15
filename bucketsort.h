@@ -8,6 +8,7 @@ class bucketSort : public Sort<T>
 {
 public:
     bucketSort(T *arr, int length);
+    bucketSort(std::vector<T> *arr, int length);
     void sort();
     void decendSort();
 
@@ -17,6 +18,10 @@ private:
     T *arr_;
     int length_;
     int iteration;
+    std::vector<T> *arrVec_;
+
+    void arraySort();
+    void vectSort();
 };
 
 #include "bucketsort.cpp"

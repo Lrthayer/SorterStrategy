@@ -239,7 +239,23 @@ void sortSetter<T, N>::merge(T *arr, int left, int right)
 }
 
 template <typename T, size_t N>
+void sortSetter<T, N>::merge(std::vector<T> *arr, int left, int right)
+{
+    mergeSort<T> sorter(arr,left,right);
+    sorter.sort();
+    setIteration(sorter.getIteration());
+}
+
+template <typename T, size_t N>
 void sortSetter<T, N>::mergeDecend(T *arr, int left, int right)
+{
+    mergeSort<T> sorter(arr,left,right);
+    sorter.decendSort();
+    setIteration(sorter.getIteration());
+}
+
+template <typename T, size_t N>
+void sortSetter<T, N>::mergeDecend(std::vector<T> *arr, int left, int right)
 {
     mergeSort<T> sorter(arr,left,right);
     sorter.decendSort();
@@ -255,7 +271,23 @@ void sortSetter<T, N>::quick(T *arr, int left, int right)
 }
 
 template <typename T, size_t N>
+void sortSetter<T, N>::quick(std::vector<T> *arr, int left, int right)
+{
+    quickSort<T> sorter(arr,left,right);
+    sorter.sort();
+    setIteration(sorter.getIteration());
+}
+
+template <typename T, size_t N>
 void sortSetter<T, N>::quickDecend(T *arr, int left, int right)
+{
+    quickSort<T> sorter(arr,left,right);
+    sorter.decendSort();
+    setIteration(sorter.getIteration());
+}
+
+template <typename T, size_t N>
+void sortSetter<T, N>::quickDecend(std::vector<T> *arr, int left, int right)
 {
     quickSort<T> sorter(arr,left,right);
     sorter.decendSort();
@@ -295,6 +327,14 @@ void sortSetter<T, N>::insertionDecend(T *arr, int length)
 }
 
 template <typename T, size_t N>
+void sortSetter<T, N>::insertionDecend(std::vector<T> *arr, int length)
+{
+    insertionSort<T, N> sorter(arr,length);
+    sorter.decendSort();
+    setIteration(sorter.getIteration());
+}
+
+template <typename T, size_t N>
 void sortSetter<T, N>::heap(T *arr, int length)
 {
     heapSort<T, N> sorter(arr,length);
@@ -327,6 +367,14 @@ void sortSetter<T, N>::heapDecend(T *arr, int length)
 }
 
 template <typename T, size_t N>
+void sortSetter<T, N>::heapDecend(std::vector<T> *arr, int length)
+{
+    heapSort<T, N> sorter(arr,length);
+    sorter.decendSort();
+    setIteration(sorter.getIteration());
+}
+
+template <typename T, size_t N>
 void sortSetter<T, N>::bucket(T *arr, int length)
 {
     bucketSort<T> sorter(arr,length);
@@ -335,7 +383,24 @@ void sortSetter<T, N>::bucket(T *arr, int length)
 }
 
 template <typename T, size_t N>
+void sortSetter<T, N>::bucket(std::vector<T> *arr, int length)
+{
+    bucketSort<T> sorter(arr,length);
+    sorter.sort();
+    setIteration(sorter.getIteration());
+}
+
+template <typename T, size_t N>
 void sortSetter<T,N>::bucketDecend(T *arr, int length)
+{
+    bucketSort<T> sorter(arr,length);
+    sorter.decendSort();
+    setIteration(sorter.getIteration());
+}
+
+
+template <typename T, size_t N>
+void sortSetter<T,N>::bucketDecend(std::vector<T> *arr, int length)
 {
     bucketSort<T> sorter(arr,length);
     sorter.decendSort();
