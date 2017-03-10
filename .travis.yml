@@ -6,4 +6,4 @@ compiler:
   - gcc
 
 script:
-  - make -C Build
+  - make
