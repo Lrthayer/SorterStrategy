@@ -6,4 +6,4 @@ compiler:
   - gcc
 
 script:
-./configure && make && make test
+  - make -C Build
